@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>WebAM Comparison</title>
+    <script src="WAAClock-latest.js"></script>
+    <script src="webam.js"></script>
+  </head>
+  <body>
+    <script>
+      let wam = new WebAudioMidi(callback, 'sf/Arachno1.0selection-grand piano.sf2', {software: true, conlog: true});
+      function callback() {
+        console.log(wam.listMIDIAccessProperties('function'));
+        console.log(wam.listOutPorts('function'));
+        console.log(wam.listInPorts('function'));
+      }
+
+      let note = 60;
+      let velocity = 127;
+      let duration = 5000; // ms
+
+      function vms() {
+        wam.noteOn (0, note, velocity, 0, 0);
+        wam.noteOff(0, note, duration, 0);
+      }
+      function wml() {
+        wam.noteOn (0, note, velocity, 0, 1);
+        wam.noteOff(0, note, duration, 1);
+      }
+    </script>
+
+    <button type="button" onclick="vms()">VirtualMS</button>
+    <button type="button" onclick="wml()">sf2synth</button>
+    <br/><br/>
+    <hr/>
+    <br/>
+  </body>
+</html>
