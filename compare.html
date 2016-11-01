@@ -8,7 +8,7 @@
   </head>
   <body>
     <script>
-      let wam = new WebAudioMidi(callback, 'sf/Arachno1.0selection-grand piano.sf2', {software: true, conlog: true});
+      let wam = new WebAudioMidi(callback, 'sf/Arachno1.0selection-grand_piano.sf2', {software: true, conlog: true});
       function callback() {
         console.log(wam.listMIDIAccessProperties('function'));
         console.log(wam.listOutPorts('function'));
